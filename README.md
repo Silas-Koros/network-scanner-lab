@@ -27,3 +27,11 @@ Observed open port: 445
 ### Step 4
 Added basic service detection using common port mapping (e.g., SMB, HTTP, RDP).
 
+### Step 5
+Added scan timing so the scanner reports how long the scan took to complete.
+
+## Step 5 Test
+Target: 192.168.72.128 (Windows VM)
+Range tested: 440-450
+Observed open port: 445 (SMB)
+New feature: scan duration display

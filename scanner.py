@@ -1,4 +1,5 @@
 import socket
+import time
 
 # Common port-to-service mapping
 common_ports = {
@@ -26,6 +27,7 @@ else:
     print(f"\nScanning {target_ip} from port {start_port} to {end_port}...\n")
 
     open_ports = 0
+    start_time = time.time()
 
     for port in range(start_port, end_port + 1):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -40,7 +42,11 @@ else:
 
         sock.close()
 
+    end_time = time.time()
+    scan_duration = end_time - start_time
+
     if open_ports == 0:
         print("No open ports were found in this range.")
 
     print(f"\nScan complete. Total open ports found: {open_ports}")
+    print(f"Scan time: {scan_duration:.2f} seconds")
