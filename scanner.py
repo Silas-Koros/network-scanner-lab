@@ -1,5 +1,21 @@
 import socket
 
+# Common port-to-service mapping
+common_ports = {
+    21: "FTP",
+    22: "SSH",
+    23: "TELNET",
+    25: "SMTP",
+    53: "DNS",
+    80: "HTTP",
+    110: "POP3",
+    139: "NetBIOS",
+    143: "IMAP",
+    443: "HTTPS",
+    445: "SMB",
+    3389: "RDP"
+}
+
 target_ip = input("Enter target IP address: ").strip()
 start_port = int(input("Enter start port: ").strip())
 end_port = int(input("Enter end port: ").strip())
@@ -18,7 +34,8 @@ else:
         result = sock.connect_ex((target_ip, port))
 
         if result == 0:
-            print(f"Port {port} is OPEN")
+            service = common_ports.get(port, "Unknown Service")
+            print(f"Port {port} is OPEN ({service})")
             open_ports += 1
 
         sock.close()
