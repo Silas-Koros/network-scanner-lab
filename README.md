@@ -35,3 +35,24 @@ Target: 192.168.72.128 (Windows VM)
 Range tested: 440-450
 Observed open port: 445 (SMB)
 New feature: scan duration display
+
+## Step 6 — Comparison with Nmap
+
+To validate the scanner, results were compared with Nmap.
+
+### Python Scanner Result
+- Detected open port: 445 (SMB)
+
+### Nmap Result
+- 445/tcp open (microsoft-ds)
+- Other ports reported as filtered
+
+### Observations
+- Both tools identified port 445 as open.
+- Nmap provides more detailed service names.
+- Nmap detected multiple ports as "filtered", while the custom scanner could not distinguish between closed and filtered ports.
+- The custom scanner uses a simple TCP connect method, which limits detection accuracy.
+
+### Conclusion
+The custom scanner successfully demonstrates how port scanning works, but lacks the advanced detection capabilities and accuracy of professional tools like Nmap.
+
