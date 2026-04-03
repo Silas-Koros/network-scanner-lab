@@ -1,58 +1,105 @@
 # Network Scanner Lab Project
 
-This project is a Python-based port scanner built for learning how network scanning works.
+## Overview
+This project is a simple Python-based TCP port scanner built to understand how network scanning works at a fundamental level. It simulates basic functionality of tools like Nmap by attempting TCP connections to identify open ports.
 
-Lab use only.
+---
 
-## Progress Log
+## Features
+- Single-port scanning
+- Port range scanning
+- Service detection for common ports (HTTP, SMB, RDP, etc.)
+- Input validation for port ranges
+- Scan duration tracking
+- Comparison with Nmap results
 
-### Step 1
-Built a basic single-port TCP connect scanner in Python.
+---
 
-### Step 2
-Expanded the scanner to scan a small range of ports and print open ports.
+## How It Works
+The scanner uses Python’s `socket` library to attempt TCP connections to specified ports. If a connection is successful, the port is considered open.
 
-### Step 3
-Improved the scanner by adding:
-- port range validation
-- open port counting
-- cleaner output
-- a summary message after the scan
+---
 
-## Step 3 Test
-Target: 192.168.72.128 (Windows VM)
-Range tested: 440-450
-Observed open port: 445
+## Usage
 
-### Step 4
-Added basic service detection using common port mapping (e.g., SMB, HTTP, RDP).
+Run the script:
 
-### Step 5
-Added scan timing so the scanner reports how long the scan took to complete.
+```bash
+python3 scanner.py
+```
 
-## Step 5 Test
-Target: 192.168.72.128 (Windows VM)
-Range tested: 440-450
-Observed open port: 445 (SMB)
-New feature: scan duration display
+Then enter:
+- Target IP address
+- Start port
+- End port
 
-## Step 6 — Comparison with Nmap
+---
 
-To validate the scanner, results were compared with Nmap.
+## Example Output
 
-### Python Scanner Result
-- Detected open port: 445 (SMB)
+```
+Scanning 172.16.94.130 from port 440 to 450...
 
-### Nmap Result
-- 445/tcp open (microsoft-ds)
-- Other ports reported as filtered
+Port 445 is OPEN (SMB)
 
-### Observations
-- Both tools identified port 445 as open.
-- Nmap provides more detailed service names.
-- Nmap detected multiple ports as "filtered", while the custom scanner could not distinguish between closed and filtered ports.
-- The custom scanner uses a simple TCP connect method, which limits detection accuracy.
+Scan complete. Total open ports found: 1
+Scan time: 11.02 seconds
+```
 
-### Conclusion
-The custom scanner successfully demonstrates how port scanning works, but lacks the advanced detection capabilities and accuracy of professional tools like Nmap.
+---
 
+## Comparison with Nmap
+
+Results were compared with Nmap to validate accuracy.
+
+- Both tools detected port 445 as open.
+- Nmap identified additional ports as "filtered".
+- The custom scanner cannot distinguish between closed and filtered ports.
+
+---
+
+## Limitations
+- Slower than Nmap
+- Uses only TCP connect scanning
+- Cannot detect filtered ports
+- Limited service detection
+
+---
+
+## Skills Demonstrated
+- Python programming (loops, conditionals, input handling)
+- Networking fundamentals (TCP, ports, services)
+- Basic cybersecurity concepts (port scanning, reconnaissance)
+- Git and GitHub workflow
+- Problem-solving and debugging
+
+---
+
+## Lab Environment
+All scans were performed in a private home lab environment using systems I own and control.
+
+---
+
+## Project Structure
+
+```
+network-scanner/
+├── scanner.py
+├── README.md
+├── docs/
+│   ├── step1-*.png
+│   ├── step2-*.png
+│   ├── step3-*.png
+│   ├── step4-*.png
+│   ├── step5-*.png
+│   ├── step6-*.png
+└── examples/
+```
+
+---
+
+## Future Improvements
+- Add multithreading for faster scanning
+- Export results to a file
+- Add UDP scanning
+- Improve service detection
